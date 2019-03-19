@@ -23,7 +23,7 @@
             <p>Заполните все поля</p>
         <?php endif; ?>
 
-        <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Назад</a>
+        <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">Назад</a> <!--Создаётся ссылка на предыдущую страницу -->
     </div>
   </body>
 </html>

@@ -17,7 +17,7 @@
 
   <body>
     <div class="form-wrapper text-center">
-      <form class="form-signin"•action="register.php"•method="post">
+      <form class="form-signin" action="register.php" method="post">
         <img class="mb-4" src="assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
         <label for="inputEmail" class="sr-only">Имя</label>
