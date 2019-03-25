@@ -24,7 +24,7 @@
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white">john@example.com</h4>
               <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Выйти</a></li>
+                <li><a href="login-form.php" class="text-white">Выйти</a></li>
               </ul>
             </div>
           </div>
@@ -50,7 +50,7 @@
           <h1 class="jumbotron-heading">Проект Task-manager</h1>
           <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
           <p>
-            <a href="#" class="btn btn-primary my-2">Добавить запись</a>
+            <a href="create-form.php" class="btn btn-primary my-2">Добавить запись</a>
           </p>
         </div>
       </section>
@@ -205,7 +205,7 @@
     <footer class="text-muted">
       <div class="container">
         <p class="float-right">
-          <a href="#">Наверх</a>
+          <a href="list.php">Наверх</a>
         </p>
         <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
         <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>

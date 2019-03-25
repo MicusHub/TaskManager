@@ -1,7 +1,7 @@
 <?php
 //Проверка- авторизован ли пользователь
 if(isset($_SESSION['email'])){ //Если пользователь зарегистрирован, то он переадресовуется на index.php
-    header( 'location: /indwx.php');
+    header( 'location: /list.php');
 }
 
 //Получение данных от пользователя
@@ -23,7 +23,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)){ //Проверка синтак
 }
 
 //Найти пользователя в БД
-$pdo = new PDO('mysql:host=localhost; dbname=tasks', 'root', 'root');
+$pdo = new PDO('mysql:host=localhost; dbname=task-manager', 'root', 'root');
 $sql = 'SELECT id from users where email=:email and password=:password';
 $statement = $pdo->prepare($sql);
 $statement->execute([':email' => $email, ':password' => $password]);
@@ -45,7 +45,7 @@ if($remember != null){
 }
 
 //Переадресация на главную
-header("Location: /index.php");
+header("Location: /list.php");
 exit;
 
 ?>

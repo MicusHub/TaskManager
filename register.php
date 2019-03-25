@@ -14,10 +14,13 @@ foreach ($_POST as $input) {
 
 //Подготовка и выполнение запроса к БД (проверка - существует ли пользователь с такими данными в БД)
 $pdo = new PDO('mysql:hosts=localhost;dbname=task-manager','root','root'); //Соединение с БД
-$sql = 'SELECT id from users where email=:email'; // Подготовка
-$statement = $pdo->prepare($sql);                 // запроса к БД
-$statement->execute([':email' => $email]); // Выполнение запроса
-$user = $statement->fetchColumn();  //Результат полученный из БД
+//Подготовка запроса к БД
+$sql = 'SELECT id from users where email=:email';
+$statement = $pdo->prepare($sql);
+//Выполнение запроса
+$statement->execute([':email' => $email]);
+//Результат полученый из БД
+$user = $statement->fetchColumn();
 if($user) {   //Если пользователь с анологичными данными уже существует
     $errorMessage = 'Пользователь с таким email уже существует'; //Вывод ошибки
     include 'errors.php';
@@ -29,13 +32,14 @@ $sql = 'INSERT INTO users (username, email, password) VALUES (:username, :email,
 $statement = $pdo->prepare ($sql);
 
 //password hash хэширование пароля
-/*$_POST['password'] = md5($_POST['password']);
+$_POST['password'] = md5($_POST['password']);
+
 $result = $statement->execute($_POST);
 if(!$result) {
     $errorMessage = 'Ошибка регистрации';
     include 'errors.php';
     exit;
-} */
+}
 //Переадресация на авторизацию (login-form.php)
 header('Location: /login-form.php');
 exit;
