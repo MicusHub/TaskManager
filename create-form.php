@@ -20,8 +20,7 @@
         <img class="mb-4" src="assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Добавить запись</h1>
         <label for="inputEmail" class="sr-only">Название</label>
-        <input type="text" id="inputTitle" class="form-control" placeholder="Название" name="title" required>
-          <!-- TITLE НЕ ОБЯЗАТЕЛЬНОЕ ДЛЯ ЗАПОЛНЕНИЯ ПОЛЕ, НО ЕСЛИ ЕГО НЕ ЗАПОЛНИТЬ, ТО ВЫВОДИТСЯ ОШИБКА "ЗАПОЛНИТЕ ЭТО ПОЛЕ" -->
+        <input type="text" name="title" id="inputTitle" class="form-control" placeholder="Название" required>
         <label for="inputEmail" class="sr-only">Описание</label>
         <textarea name="description" id="inputDescription" class="form-control" cols="30" rows="10" placeholder="Описание"></textarea>
         <input type="file" name="image">

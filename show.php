@@ -17,11 +17,12 @@
 
   <body>
     <div class="form-wrapper text-center">
-      <img src="assets/img/no-image.jpg" alt="" width="400">
-      <h2>Lorem ipsum</h2>
+      <img src="/uploads/<?=$task['image']?>" alt="" width="400">
+      <h2><?=$task['title']?></h2>
       <p>
-        Пройти первый а потом второй урок. Закрепить практикой и написать проект сначала без подглядываний.
+          <?=$task['description']?>
       </p>
+        <a href="list.php" class="btn btn-secondary">Вернуться в список задач</a>
     </div>
   </body>
 </html>

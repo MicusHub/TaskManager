@@ -1,4 +1,5 @@
 <?php
+session_start();
 //Проверка- авторизован ли пользователь
 if(isset($_SESSION['email'])){ //Если пользователь зарегистрирован, то он переадресовуется на index.php
     header( 'location: /list.php');
@@ -36,9 +37,9 @@ if(!$user){
 
 //Создание сессии
 session_start();
-$_SESSION['email'] = $_POST['email'];
+$_SESSION['user_id'] = $user['id'];
 
-//Кнопка запомнит меня
+//Кнопка запомнить меня
 if($remember != null){
     //Создать куки
     setcookie('login', md5($_COOKIE['PHPSESSID']), time() + 3600 * 3);
