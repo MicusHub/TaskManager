@@ -37,7 +37,7 @@ if(!$user){
 
 //Создание сессии
 session_start();
-$_SESSION['user_id'] = $user['id'];
+$_SESSION['user'] = $user;
 
 //Кнопка запомнить меня
 if($remember != null){

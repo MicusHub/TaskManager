@@ -1,6 +1,15 @@
 <?php
 $pdo = new PDO('mysql:hosts=localhost;dbname=task-manager','root','root');
 $id=$_GET['id'];
+$task=oneTask($pdo, $id);
+function oneTask($pdo, $data){
+    $sql = "SELECT * FROM tasks WHERE task_id=:id";
+    $statement=$pdo->prepare($sql);
+    $statement->bindParam(':id', $data);
+    $statement->execute();
+    $task=$statement->fetch(PDO::FETCH_ASSOC);
+    return $task;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,7 +31,7 @@ $id=$_GET['id'];
     <div class="form-wrapper text-center">
       <form class="form-signin" method="post" action="edit.php?id=<?= $id; ?>" enctype="multipart/form-data">
         <img class="mb-4" src="assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Добавить запись</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Редактировать запись</h1>
           <input type="hidden" name="user_name" value="<?=$task['user_id']?>">
         <label for="inputEmail" class="sr-only">Название</label>
         <input type="text" id="inputEmail" name="title" class="form-control" placeholder="Название" required value="<?=$task['title']?>">

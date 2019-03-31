@@ -17,7 +17,7 @@ function uploadImage($image) {
 
 //Получение данных
 $data=[
-    'user_id'=>$_SESSION['user_id'],
+    'user_id'=>$_SESSION['user']['id'],
     'title'=>$_POST['title'],
     'description'=>$_POST['description'],
     'image'=>$imageName
