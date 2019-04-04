@@ -11,11 +11,6 @@ function deleteTask($pdo, $data){
     $statement->bindParam('id', $data);
     $statement->execute();
 }
-/*$sql = "DELETE FROM tasks WHERE id = $SASSION[user_id]";
-if ($pdo->query($sql) === TRUE){
-    echo 'Запись удалеа';
-    exit;
-} */
 
 header('Location:list.php');
 ?>
