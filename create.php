@@ -1,5 +1,10 @@
 <?php
 session_start();
+//Проверка id сессии
+if(!isset($_SESSION['user_id'])) {
+    header('Location: /login-form.php');
+    exit;
+}
 
 //Подключение к БД
 $pdo = new PDO('mysql:hosts=localhost;dbname=task-manager','root','root');
@@ -17,12 +22,11 @@ function uploadImage($image) {
 
 //Получение данных
 $data=[
-    'user_id'=>$_SESSION['user']['id'],
+    'user_id'=>$_SESSION['user_id'],
     'title'=>$_POST['title'],
     'description'=>$_POST['description'],
     'image'=>$imageName
 ];
-var_dump($data);
 
 //Валидация
 foreach ($data as $value){
@@ -33,15 +37,12 @@ foreach ($data as $value){
 }
 
 //Передача данных в БД
-$sql='INSERT INTO tasks(title, description, image, user_id)VALUES (:title, :description, :image, :user_id)';
+$sql='INSERT INTO tasks (user_id, title, description, image) VALUES (:user_id, :title, :description, :image)';
 $statement=$pdo->prepare($sql);
 $statement->execute($data);
-
-
 
 //Переадресация на страницу создания задач
 header('Location: /list.php');
 exit;
-
 ?>
 

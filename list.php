@@ -1,14 +1,18 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location:login-form.php');
+    exit();
+}
+var_dump($_SESSION);
 
 $pdo = new PDO('mysql:host=localhost; dbname=task-manager', 'root', 'root');
-$sql = "SELECT user_id, title, description, image FROM tasks"; //Вытаскивает данные из БД
-
+//$sql = "SELECT user_id, title, description, image FROM tasks where user_id=:user_id"; //Вытаскивает данные из БД
 $tasks=Tasks($pdo);
 function Tasks($pdo){
-    $sql="SELECT * FROM tasks";
+    $sql="SELECT * FROM tasks WHERE user_id=:user_id";
     $statement=$pdo->prepare($sql);
-    $statement->execute();
+    $statement->execute([':user_id' =>  $_SESSION['user_id']]);
     $tasks=$statement->fetchAll(PDO::FETCH_ASSOC);
     return $tasks;
 }
