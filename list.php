@@ -4,7 +4,6 @@ if (!isset($_SESSION['user_id'])) {
     header('Location:login-form.php');
     exit();
 }
-var_dump($_SESSION);
 
 $pdo = new PDO('mysql:host=localhost; dbname=task-manager', 'root', 'root');
 //$sql = "SELECT user_id, title, description, image FROM tasks where user_id=:user_id"; //Вытаскивает данные из БД
