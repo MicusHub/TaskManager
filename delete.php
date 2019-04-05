@@ -12,5 +12,9 @@ function deleteTask($pdo, $data){
     $statement->execute();
 }
 
+if(file_exists('uploads/' . $task['image'])) {
+    unlink('uploads/' . $task['image']);
+}
+
 header('Location:list.php');
 ?>
