@@ -1,21 +1,13 @@
 <?php
 session_start();
+include 'begin.php';
 //Проверка на регистрацию
 if(!isset($_SESSION['user_id'])) {
     header('Location: /login-form.php');
     exit;
 }
 
-//Подключение к БД
 $pdo = new PDO('mysql:hosts=localhost;dbname=task-manager','root','root');
-
-//Валидация
-foreach ($data as $value){
-    if(empty($value)){
-        require 'errors.php';
-        exit();
-    }
-}
 
 //Получение и обработка файла
 $imageName=uploadImage($_FILES['image']);
@@ -35,6 +27,14 @@ $data=[
     'image'=>$imageName
 ];
 
+//Валидация
+foreach ($data as $value){
+    if(empty($value)){
+        require 'errors.php';
+        exit();
+    }
+}
+
 //Выполнение запроса
 update($pdo, $data);
 function update($pdo, $data)
@@ -44,8 +44,10 @@ function update($pdo, $data)
         $str_data .= $key . "=:$key, ";
     }
     $str_data = rtrim($str_data, ", ");
-    $sql = "UPDATE tasks SET $str_data WHERE task_id =:id";
+    $sql = "UPDATE tasks SET $str_data WHERE task_id =:task_id";
     $statement = $pdo->prepare($sql);
+    var_dump($sql);
+    var_dump($data);
     $statement->execute($data);
 }
 
@@ -57,4 +59,5 @@ if(file_exists('uploads/' . $task['image'])) {
 //Переадресация на страницу создания задач
 header('Location: /list.php');
 exit;
+
 ?>
