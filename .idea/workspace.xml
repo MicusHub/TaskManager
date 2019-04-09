@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5eee37f-2b4b-4015-951c-06522d63d254" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create-form.php" beforeDir="false" afterPath="$PROJECT_DIR$/create-form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edit-form.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit-form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login-form.php" beforeDir="false" afterPath="$PROJECT_DIR$/login-form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/show.php" beforeDir="false" afterPath="$PROJECT_DIR$/show.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,8 +71,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/edit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+            <state relative-caret-position="-27">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -205,12 +193,12 @@
       <workItem from="1554811279533" duration="35000" />
       <workItem from="1554812068134" duration="740000" />
       <workItem from="1554818522164" duration="680000" />
-      <workItem from="1554819631663" duration="13153000" />
+      <workItem from="1554819631663" duration="13271000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="222105000" />
+    <option name="totallyTimeSpent" value="222223000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="722" extended-state="0" />
@@ -408,8 +396,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+        <state relative-caret-position="-27">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
         </state>
       </provider>
     </entry>
