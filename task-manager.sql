@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 04, 2019 at 05:48 PM
+-- Generation Time: Apr 07, 2019 at 06:24 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.8
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tasks` (
-  `id` int(11) NOT NULL,
+  `task_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text,
@@ -38,8 +38,10 @@ CREATE TABLE `tasks` (
 -- Dumping data for table `tasks`
 --
 
-INSERT INTO `tasks` (`id`, `user_id`, `title`, `description`, `image`) VALUES
-(15, 14, 'Задача 1', 'Первая задача Даши', '5ca611234bcc6.jpg');
+INSERT INTO `tasks` (`task_id`, `user_id`, `title`, `description`, `image`) VALUES
+(15, 14, 'Задача 1', 'Первая задача Даши', '5ca611234bcc6.jpg'),
+(19, 14, 'Задача 2', 'Вторая задача Даши', '5ca8e2974cb51.jpg'),
+(20, 14, 'Задача 3', 'Третья задача Даши', '5ca765b912f58.jpg');
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
 -- Indexes for table `tasks`
 --
 ALTER TABLE `tasks`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`task_id`),
   ADD UNIQUE KEY `title` (`title`);
 
 --
@@ -88,7 +90,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
