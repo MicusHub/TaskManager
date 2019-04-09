@@ -1,8 +1,10 @@
 <?php
 //Получение данных из $_POST
-$username = $_POST['username'];
-$email = $_POST['email'];
-$password = $_POST['password'];
+$data=[
+    'name'=>$_POST['name'],
+    'email'=>$_POST['email'],
+    'password'=>$_POST['password']
+];
 
 //Проверка данных ВАЛИДАЦИЯ
 foreach ($_POST as $input) {
@@ -12,36 +14,13 @@ foreach ($_POST as $input) {
     }
 }
 
-//Подготовка и выполнение запроса к БД (проверка - существует ли пользователь с такими данными в БД)
-$pdo = new PDO('mysql:hosts=localhost;dbname=task-manager','root','root'); //Соединение с БД
-//Подготовка запроса к БД
-$sql = 'SELECT id from users where email=:email';
-$statement = $pdo->prepare($sql);
-//Выполнение запроса
-$statement->execute([':email' => $email]);
-//Результат полученый из БД
-$user = $statement->fetchColumn();
-if($user) {   //Если пользователь с анологичными данными уже существует
-    $errorMessage = 'Пользователь с таким email уже существует'; //Вывод ошибки
-    include 'errors.php';
-    exit; //Останавливает скрипт
-}
+//Подключение к файлу-обработчику
+require_once('handler.php');
 
-//Сохранение данных пользователя в БД
-$sql = 'INSERT INTO users (username, email, password) VALUES (:username, :email, :password)';
-$statement = $pdo->prepare ($sql);
+//Функция обработки данных
+register($data, $pdo);
 
-//password hash хэширование пароля
-$_POST['password'] = md5($_POST['password']);
-
-$result = $statement->execute($_POST);
-if(!$result) {
-    $errorMessage = 'Ошибка регистрации';
-    include 'errors.php';
-    exit;
-}
 //Переадресация на авторизацию (login-form.php)
 header('Location: /login-form.php');
 exit;
-
 ?>

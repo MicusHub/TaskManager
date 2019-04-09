@@ -1,15 +1,8 @@
 <?php
-$pdo = new PDO('mysql:host=localhost; dbname=task-manager', 'root', 'root');
+require_once('handler.php');
+
 $data = $_GET['id'];
-$task = oneTask($pdo , $data);
-function oneTask($pdo, $data){
-    $sql = "SELECT * FROM tasks WHERE task_id=:id";
-    $statement=$pdo->prepare($sql);
-    $statement->bindParam(':id', $data);
-    $statement->execute();
-    $task=$statement->fetch(PDO::FETCH_ASSOC);
-    return $task;
-}
+$task = moreTask($pdo , $data);
 ?>
 <!doctype html>
 <html lang="en">

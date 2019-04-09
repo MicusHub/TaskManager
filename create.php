@@ -7,18 +7,10 @@ if(!isset($_SESSION['user_id'])) {
 }
 
 //Подключение к БД
-$pdo = new PDO('mysql:hosts=localhost;dbname=task-manager','root','root');
+require_once('handler.php');
 
-//Обработка файлов
+//Функция обработчик файла (картинки)
 $imageName = uploadImage($_FILES['image']);
-function uploadImage($image) {
-    $name_img = $image['name'];
-    $tmp_name = $image['tmp_name'];
-    $imageType = pathinfo($name_img, PATHINFO_EXTENSION); //Определение формата изображения
-    $imageName = uniqid() . '.' . $imageType;
-    move_uploaded_file($tmp_name, "uploads/" . $imageName); //Перенесение полученного файла в папку uploads
-    return $imageName;
-}
 
 //Получение данных
 $data=[
@@ -36,10 +28,8 @@ foreach ($data as $value){
     }
 }
 
-//Передача данных в БД
-$sql='INSERT INTO tasks (user_id, title, description, image) VALUES (:user_id, :title, :description, :image)';
-$statement=$pdo->prepare($sql);
-$statement->execute($data);
+//Функция передачи данных в БД
+addTask($data, $pdo);
 
 //Переадресация на страницу создания задач
 header('Location: /list.php');

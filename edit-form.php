@@ -3,7 +3,7 @@ $pdo = new PDO('mysql:hosts=localhost;dbname=task-manager','root','root');
 $id=$_GET['id']; //Вывести задачу из БД
 $task=oneTask($pdo, $id);
 function oneTask($pdo, $data){
-    $sql = "SELECT * FROM tasks WHERE task_id=:id";
+    $sql = "SELECT * FROM tasks WHERE id=:id";
     $statement=$pdo->prepare($sql);
     $statement->bindParam(':id', $data);
     $statement->execute();

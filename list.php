@@ -1,23 +1,15 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 if (!isset($_SESSION['user_id'])) {
     header('Location:login-form.php');
     exit();
 }
 
-$pdo = new PDO('mysql:host=localhost; dbname=task-manager', 'root', 'root');
-//$sql = "SELECT user_id, title, description, image FROM tasks where user_id=:user_id"; //Вытаскивает данные из БД
-$tasks=Tasks($pdo);
-function Tasks($pdo){
-    $sql="SELECT * FROM tasks WHERE user_id=:user_id";
-    $statement=$pdo->prepare($sql);
-    $statement->execute([':user_id' =>  $_SESSION['user_id']]);
-    $tasks=$statement->fetchAll(PDO::FETCH_ASSOC);
-    return $tasks;
-}
+//Подключение к файлу-обработчику
+require_once('handler.php');
+
+//Функция обработки данных
+$tasks=userTasks($pdo);
 ?>
 <!doctype html>
 <html lang="en">
@@ -42,7 +34,7 @@ function Tasks($pdo){
               <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white"><?=$_SESSION['email']?></h4>
+              <h4 class="text-white"><?php echo $_SESSION['email']?></h4>
               <ul class="list-unstyled">
                 <li><a href="logout.php" class="text-white">Выйти</a></li>
               </ul>
@@ -87,9 +79,9 @@ function Tasks($pdo){
                   <p class="card-text"><?=$task['title']?></p><!--Вытаскивает заголовок из БД-->
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <a href="<?= 'show.php?id='.$task['task_id']?>" class="btn btn-sm btn-outline-secondary">Подробнее</a><!--Ссылка на ip задачи в БД-->
-                      <a href="<?= 'edit-form.php?id='.$task['task_id']?>" class="btn btn-sm btn-outline-secondary">Изменить</a>
-                      <a href="<?= 'delete.php?id='.$task['task_id']?>" class="btn btn-sm btn-outline-secondary" onclick="confirm('are you sure?')">Удалить</a>
+                      <a href="<?= 'show.php?id='.$task['id']?>" class="btn btn-sm btn-outline-secondary">Подробнее</a><!--Ссылка на ip задачи в БД-->
+                      <a href="<?= 'edit-form.php?id='.$task['id']?>" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                      <a href="<?= 'delete.php?id='.$task['id']?>" class="btn btn-sm btn-outline-secondary" onclick="confirm('are you sure?')">Удалить</a>
                     </div>
                   </div>
                 </div>

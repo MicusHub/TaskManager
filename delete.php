@@ -1,17 +1,12 @@
 <?php
 session_start();
 
-$pdo = new PDO('mysql:hosts=localhost;dbname=task-manager','root','root');
+require_once('handler.php');
 
 $data = $_GET['id'];
 deleteTask($pdo , $data);
-function deleteTask($pdo, $data){
-    $sql="DELETE FROM tasks WHERE task_id=:id";
-    $statement = $pdo->prepare($sql);
-    $statement->bindParam('id', $data);
-    $statement->execute();
-}
 
+//Удаление картинки из папки uploads
 if(file_exists('uploads/' . $task['image'])) {
     unlink('uploads/' . $task['image']);
 }
